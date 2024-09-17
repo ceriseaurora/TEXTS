@@ -53,13 +53,24 @@ document.getElementById('submit-button').addEventListener('click', async() => {
         });
         if (response.ok) {
             const result = await response.json();
-            document.getElementById('code-display').textContent = `Share code: ${result.code}`;
+            document.getElementById('code-display').textContent = result.code;
+            document.getElementById('code-card').classList.remove('hidden');
         } else {
             alert('Failed to generate the share code, please try again later');
         }
     } catch (error) {
         alert('Network error, please try again later');
     }
+});
+
+// 复制分享码到剪切板
+document.getElementById('copy-button').addEventListener('click', () => {
+    const code = document.getElementById('code-display').textContent;
+    navigator.clipboard.writeText(code).then(() => {
+        alert('Code copied to clipboard');
+    }).catch(err => {
+        alert('Failed to copy code');
+    });
 });
 
 document.getElementById('fetch-button').addEventListener('click', async() => {
