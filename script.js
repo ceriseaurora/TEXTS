@@ -46,7 +46,7 @@ document.getElementById('submit-button').addEventListener('click', async() => {
     }
 
     try {
-        const response = await fetch('https://text-project.blueaurora.workers.dev', {
+        const response = await fetch('https://paste-backened.aquariushho.asia', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ text, expiration })
@@ -70,7 +70,7 @@ document.getElementById('fetch-button').addEventListener('click', async() => {
     }
 
     try {
-        const response = await fetch(`https://text-project.blueaurora.workers.dev?code=${code}`);
+        const response = await fetch(`https://paste-backened.aquariushho.asia?code=${code}`);
         if (response.ok) {
             const result = await response.json();
             document.getElementById('text-display').textContent = result.text;
