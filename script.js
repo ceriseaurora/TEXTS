@@ -64,12 +64,12 @@ document.getElementById('submit-button').addEventListener('click', async() => {
 });
 
 // 复制分享码到剪切板
-document.getElementById('copy-button').addEventListener('click', () => {
+document.getElementById('copy-code-button').addEventListener('click', () => {
     const code = document.getElementById('code-display').textContent;
     navigator.clipboard.writeText(code).then(() => {
         alert('分享码已复制到剪贴板');
     }).catch(err => {
-        alert('复制失败');
+        alert('复制分享码失败');
     });
 });
 
@@ -85,12 +85,24 @@ document.getElementById('fetch-button').addEventListener('click', async() => {
         if (response.ok) {
             const result = await response.json();
             document.getElementById('text-display').textContent = result.text;
+            document.getElementById('text-card').classList.remove('hidden');
         } else if (response.status === 404) {
-            document.getElementById('text-display').textContent = '文本不存在或已过期';
+            document.getElementById('text-display').textContent = 'Text not found or expired';
+            document.getElementById('text-card').classList.remove('hidden');
         } else {
             alert('无法获取文本，请稍后重试');
         }
     } catch (error) {
         alert('网络错误，请稍后重试');
     }
+});
+
+// 复制获取到的文本到剪切板
+document.getElementById('copy-text-button').addEventListener('click', () => {
+    const text = document.getElementById('text-display').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+        alert('文本已复制到剪贴板');
+    }).catch(err => {
+        alert('复制文本失败');
+    });
 });

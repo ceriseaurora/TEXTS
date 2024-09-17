@@ -91,7 +91,8 @@ button:active {
     transform: translateY(0);
 }
 
-#code-card {
+#code-card,
+#text-card {
     margin-top: 20px;
     padding: 15px;
     background-color: #f5f5f5;
@@ -99,7 +100,8 @@ button:active {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-#code-card p {
+#code-card p,
+#text-card p {
     font-size: 18px;
     margin-bottom: 10px;
 }

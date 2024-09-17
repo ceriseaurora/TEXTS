@@ -39,13 +39,18 @@
             <!-- 分享码卡片 -->
             <div id="code-card" class="hidden">
                 <p>Share code: <span id="code-display"></span></p>
-                <button id="copy-button">复制分享码</button>
+                <button id="copy-code-button">复制分享码</button>
             </div>
 
             <!-- 提取码输入框 -->
-            <input id="code-input" placeholder="输入分享码">
-            <button id="fetch-button">获取分享码</button>
-            <p id="text-display"></p>
+            <input id="code-input" placeholder="输入分享代码">
+            <button id="fetch-button">获取文本</button>
+
+            <!-- 获取到的文本卡片 -->
+            <div id="text-card" class="hidden">
+                <p>Retrieved Text: <span id="text-display"></span></p>
+                <button id="copy-text-button">复制文本</button>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>
