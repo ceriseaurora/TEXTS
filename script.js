@@ -12,7 +12,7 @@ document.getElementById('submit-button').addEventListener('click', async() => {
     let expiration;
 
     if (!text) {
-        alert('Please enter some text');
+        alert('请输入文本');
         return;
     }
 
@@ -20,7 +20,7 @@ document.getElementById('submit-button').addEventListener('click', async() => {
         const customDate = document.getElementById('custom-date').value;
         const customTime = document.getElementById('custom-time').value;
         if (!customDate || !customTime) {
-            alert('Please enter a valid custom date and time');
+            alert('请输入有效的自定义日期和时间');
             return;
         }
         expiration = `${customDate}T${customTime}:00`;
@@ -56,10 +56,10 @@ document.getElementById('submit-button').addEventListener('click', async() => {
             document.getElementById('code-display').textContent = result.code;
             document.getElementById('code-card').classList.remove('hidden');
         } else {
-            alert('Failed to generate the share code, please try again later');
+            alert('生成分享码失败，请稍后重试');
         }
     } catch (error) {
-        alert('Network error, please try again later');
+        alert('网络错误，请稍后重试');
     }
 });
 
@@ -67,16 +67,16 @@ document.getElementById('submit-button').addEventListener('click', async() => {
 document.getElementById('copy-button').addEventListener('click', () => {
     const code = document.getElementById('code-display').textContent;
     navigator.clipboard.writeText(code).then(() => {
-        alert('Code copied to clipboard');
+        alert('分享码已复制到剪贴板');
     }).catch(err => {
-        alert('Failed to copy code');
+        alert('复制失败');
     });
 });
 
 document.getElementById('fetch-button').addEventListener('click', async() => {
     const code = document.getElementById('code-input').value.trim();
     if (!code) {
-        alert('Please enter the share code');
+        alert('请输入分享码');
         return;
     }
 
@@ -86,11 +86,11 @@ document.getElementById('fetch-button').addEventListener('click', async() => {
             const result = await response.json();
             document.getElementById('text-display').textContent = result.text;
         } else if (response.status === 404) {
-            document.getElementById('text-display').textContent = 'Text not found or expired';
+            document.getElementById('text-display').textContent = '文本不存在或已过期';
         } else {
-            alert('Failed to retrieve the text, please try again later');
+            alert('无法获取文本，请稍后重试');
         }
     } catch (error) {
-        alert('Network error, please try again later');
+        alert('网络错误，请稍后重试');
     }
 });

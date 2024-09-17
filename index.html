@@ -14,37 +14,37 @@
         <div class="card">
             <h1>Share Your Text</h1>
             <!-- 输入文字 -->
-            <textarea id="text-input" placeholder="Enter your text here (max 500 characters)"></textarea>
+            <textarea id="text-input" placeholder="在此输入您的文本（最多 500 个字符）"></textarea>
 
             <!-- 选择过期时间 -->
-            <label for="expiration-select">Expiration Time:</label>
+            <label for="expiration-select">到期时间：</label>
             <select id="expiration-select">
-        <option value="1d">1 Day</option>
-        <option value="3d">3 Days</option>
-        <option value="7d">1 Week</option>
-        <option value="30d">1 Month</option>
-        <option value="custom">Custom</option>
+        <option value="1d">1 天</option>
+        <option value="3d">3 天</option>
+        <option value="7d">1 周</option>
+        <option value="30d">1 月</option>
+        <option value="custom">自定义</option>
       </select>
 
             <!-- 自定义过期时间 -->
             <div id="custom-expiration" style="display:none;">
-                <label for="custom-date">Choose Date:</label>
+                <label for="custom-date">选择日期：</label>
                 <input type="date" id="custom-date">
-                <label for="custom-time">Choose Time:</label>
+                <label for="custom-time">选择时间：</label>
                 <input type="time" id="custom-time">
             </div>
 
-            <button id="submit-button">Generate Share Code</button>
+            <button id="submit-button">生成分享码</button>
 
             <!-- 分享码卡片 -->
             <div id="code-card" class="hidden">
                 <p>Share code: <span id="code-display"></span></p>
-                <button id="copy-button">Copy Code</button>
+                <button id="copy-button">复制分享码</button>
             </div>
 
             <!-- 提取码输入框 -->
             <input id="code-input" placeholder="Enter the share code">
-            <button id="fetch-button">Retrieve Text</button>
+            <button id="fetch-button">获取分享码</button>
             <p id="text-display"></p>
         </div>
     </div>
