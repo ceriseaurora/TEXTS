@@ -1,7 +1,7 @@
 document.getElementById('submit-button').addEventListener('click', async() => {
     const text = document.getElementById('text-input').value;
     if (text) {
-        const response = await fetch('https://your-worker-url', {
+        const response = await fetch('https://text-project.blueaurora.workers.dev', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ text })
@@ -14,7 +14,7 @@ document.getElementById('submit-button').addEventListener('click', async() => {
 document.getElementById('fetch-button').addEventListener('click', async() => {
     const code = document.getElementById('code-input').value;
     if (code) {
-        const response = await fetch(`https://your-worker-url?code=${code}`);
+        const response = await fetch(`https://text-project.blueaurora.workers.dev?code=${code}`);
         if (response.status === 200) {
             const result = await response.json();
             document.getElementById('text-display').textContent = result.text;
