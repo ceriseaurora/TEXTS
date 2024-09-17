@@ -4,22 +4,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>文字分享</title>
+    <title>Text Share</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="container">
-        <h1>文字分享平台</h1>
-        <textarea id="text-input" placeholder="请输入文字..."></textarea>
-        <button id="submit-button">生成提取码</button>
-        <p id="code-display"></p>
+    <div class="wrapper">
+        <div class="card">
+            <h1>Share Your Text</h1>
+            <!-- 输入文字 -->
+            <textarea id="text-input" placeholder="Enter your text here (max 500 characters)"></textarea>
 
-        <input id="code-input" placeholder="输入提取码">
-        <button id="fetch-button">提取文字</button>
-        <p id="text-display"></p>
+            <!-- 选择过期时间 -->
+            <label for="expiration-select">Expiration Time:</label>
+            <select id="expiration-select">
+        <option value="1d">1 Day</option>
+        <option value="3d">3 Days</option>
+        <option value="7d">1 Week</option>
+        <option value="30d">1 Month</option>
+        <option value="custom">Custom</option>
+      </select>
+
+            <!-- 自定义过期时间 -->
+            <div id="custom-expiration" style="display:none;">
+                <label for="custom-date">Choose Date:</label>
+                <input type="date" id="custom-date">
+                <label for="custom-time">Choose Time:</label>
+                <input type="time" id="custom-time">
+            </div>
+
+            <button id="submit-button">Generate Share Code</button>
+            <p id="code-display"></p>
+
+            <!-- 提取码输入框 -->
+            <input id="code-input" placeholder="Enter the share code">
+            <button id="fetch-button">Retrieve Text</button>
+            <p id="text-display"></p>
+        </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 
