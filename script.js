@@ -101,14 +101,14 @@ document.getElementById('fetch-button').addEventListener('click', async () => {
             // 显示解码后的文本
             document.getElementById('text-display').textContent = decodedText;
             document.getElementById('text-card').classList.remove('hidden');
+            document.getElementById('copy-text-button').classList.remove('hidden'); // 显示复制文本按钮
 
-            // 显示"复制文本"按钮
-            document.getElementById('copy-text-button').classList.remove('hidden');
-
+            // 根据设备类型设置卡片长度
+            setCardHeight();
         } else if (response.status === 404) {
             document.getElementById('text-display').textContent = 'Text not found or expired';
             document.getElementById('text-card').classList.remove('hidden');
-            document.getElementById('copy-text-button').classList.add('hidden');
+            document.getElementById('copy-text-button').classList.add('hidden'); // 隐藏复制文本按钮
         } else {
             alert('无法获取文本，请稍后重试');
         }
@@ -116,6 +116,7 @@ document.getElementById('fetch-button').addEventListener('click', async () => {
         alert('网络错误，请稍后重试');
     }
 });
+
 
 // 复制获取到的文本到剪切板
 document.getElementById('copy-text-button').addEventListener('click', () => {
