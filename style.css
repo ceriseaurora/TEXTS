@@ -192,3 +192,39 @@ label {
         padding: 8px;
     }
 }
+/* ... (其余样式，保持不变) */
+
+/* 切换按钮样式 */
+.toggle-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.toggle-buttons button {
+    background-color: #fff;
+    color: #6e45e2;
+    border: 1px solid #6e45e2;
+    margin: 0 10px;
+    transition: background-color 0.3s ease, color 0.3s ease; 
+}
+
+.toggle-buttons button.active {
+    background-color: #6e45e2;
+    color: #fff;
+}
+
+/* 文件上传进度条 */
+#file-progress {
+    margin-top: 10px;
+}
+
+#file-progress-bar {
+    width: 100%;
+}
+
+#file-progress-text {
+    display: block;
+    text-align: center;
+    margin-top: 5px;
+}
