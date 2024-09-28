@@ -4,19 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Text Share</title>
+    <title>Share Text & Files</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div class="wrapper">
-        <div class="card" id="main-card" draggable="true">
-            <h1>Share Your Text</h1>
-            <!-- 输入文字 -->
-            <textarea id="text-input" placeholder="在此输入您的文本（最多 500 个字符）"></textarea>
+        <!-- 切换按钮 -->
+        <div class="toggle-buttons">
+            <button id="text-button" class="active">文本分享</button>
+            <button id="file-button">文件分享</button>
+        </div>
 
-            <!-- 选择过期时间 -->
+        <!-- 文本分享卡片 -->
+        <div class="card" id="text-card" draggable="true">
+            <h1>分享您的文本</h1>
+            <textarea id="text-input" placeholder="在此输入您的文本（最多 500 个字符）"></textarea>
             <label for="expiration-select">到期时间：</label>
             <select id="expiration-select">
                 <option value="1d">1 天</option>
@@ -25,32 +29,53 @@
                 <option value="30d">1 月</option>
                 <option value="custom">自定义</option>
             </select>
-
-            <!-- 自定义过期时间 -->
             <div id="custom-expiration" style="display:none;">
                 <label for="custom-date">选择日期：</label>
                 <input type="date" id="custom-date">
                 <label for="custom-time">选择时间：</label>
                 <input type="time" id="custom-time">
             </div>
-
-            <button id="submit-button">生成分享码</button>
-
-            <!-- 分享码卡片 -->
-            <div id="code-card" class="hidden">
-                <p>分享码： <span id="code-display"></span></p>
-                <button id="copy-code-button">复制分享码</button>
+            <button id="submit-text-button">生成分享码</button>
+            <div id="text-code-card" class="hidden">
+                <p>分享码： <span id="text-code-display"></span></p>
+                <button id="copy-text-code-button">复制分享码</button>
             </div>
+            <input id="text-code-input" placeholder="输入分享码">
+            <button id="fetch-text-button">获取文本</button>
+            <div id="fetched-text-card" class="hidden" draggable="true">
+                <p><span id="fetched-text-display"></span></p>
+                <button id="copy-fetched-text-button">复制文本</button>
+            </div>
+        </div>
 
-            <!-- 提取码输入框 -->
-            <input id="code-input" placeholder="输入分享码">
-            <button id="fetch-button">获取文本</button>
-
-            <!-- 获取到的文本卡片 -->
-            <div id="text-card" class="hidden" draggable="true">
-                <p><span id="text-display"></span></p>
-                <!-- 将复制按钮放入文本卡片中 -->
-                <button id="copy-text-button">复制文本</button>
+        <!-- 文件分享卡片 -->
+        <div class="card hidden" id="file-card" draggable="true">
+            <h1>分享您的文件</h1>
+            <input type="file" id="file-input">
+            <label for="file-expiration-select">到期时间：</label>
+            <select id="file-expiration-select">
+                <option value="1d">1 天</option>
+                <option value="3d">3 天</option>
+                <option value="7d">1 周</option>
+                <option value="30d">1 月</option>
+                <option value="custom">自定义</option>
+            </select>
+            <div id="file-custom-expiration" style="display:none;">
+                <label for="file-custom-date">选择日期：</label>
+                <input type="date" id="file-custom-date">
+                <label for="file-custom-time">选择时间：</label>
+                <input type="time" id="file-custom-time">
+            </div>
+            <button id="submit-file-button">生成分享码</button>
+            <div id="file-code-card" class="hidden">
+                <p>分享码： <span id="file-code-display"></span></p>
+                <button id="copy-file-code-button">复制分享码</button>
+            </div>
+            <input id="file-code-input" placeholder="输入分享码">
+            <button id="fetch-file-button">下载文件</button>
+            <div id="file-progress" class="hidden">
+                <progress id="file-progress-bar" value="0" max="100"></progress>
+                <span id="file-progress-text">0%</span>
             </div>
         </div>
     </div>
