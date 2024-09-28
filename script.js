@@ -101,6 +101,9 @@ document.getElementById('fetch-button').addEventListener('click', async () => {
             // 显示解码后的文本
             document.getElementById('text-display').textContent = decodedText;
             document.getElementById('text-card').classList.remove('hidden');
+
+            // 根据设备类型设置卡片长度
+            setCardHeight();
         } else if (response.status === 404) {
             document.getElementById('text-display').textContent = 'Text not found or expired';
             document.getElementById('text-card').classList.remove('hidden');
@@ -121,3 +124,21 @@ document.getElementById('copy-text-button').addEventListener('click', () => {
         alert('复制文本失败');
     });
 });
+
+// 动态设置卡片长度
+function setCardHeight() {
+    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+    const textCard = document.getElementById('text-card');
+    const copyButton = document.getElementById('copy-text-button');
+
+    if (isMobile) {
+        // 移动设备：默认长度设置，使按钮正好在屏幕底部
+        textCard.style.height = 'calc(100vh - 300px)';
+        copyButton.style.position = 'absolute';
+        copyButton.style.bottom = '20px';
+        copyButton.style.width = '90%';
+    } else {
+        // PC 浏览器：适当增加卡片的默认长度
+        textCard.style.height = '400px';
+    }
+}
