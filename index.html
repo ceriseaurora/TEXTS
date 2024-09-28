@@ -11,7 +11,7 @@
 
 <body>
     <div class="wrapper">
-        <div class="card" draggable="true">
+        <div class="card" id="main-card" draggable="true">
             <h1>Share Your Text</h1>
             <!-- 输入文字 -->
             <textarea id="text-input" placeholder="在此输入您的文本（最多 500 个字符）"></textarea>
@@ -49,8 +49,10 @@
             <!-- 获取到的文本卡片 -->
             <div id="text-card" class="hidden" draggable="true">
                 <p><span id="text-display"></span></p>
-                <button id="copy-text-button">复制文本</button>
             </div>
+
+            <!-- 复制文本按钮（放在文本卡片外） -->
+            <button id="copy-text-button" class="hidden">复制文本</button>
         </div>
     </div>
     <script src="script.js"></script>
