@@ -1,3 +1,4 @@
+
 /* 通用样式 */
 body,
 html {
@@ -69,13 +70,6 @@ select:focus {
     outline: none;
 }
 
-/* 文件上传样式 */
-input[type="file"] {
-    display: block;
-    margin: 15px 0;
-    border: none;
-}
-
 /* 按钮样式 */
 button {
     background-color: #6e45e2;
@@ -99,26 +93,8 @@ button:active {
     transform: translateY(0);
 }
 
-/* 文件和文本分享的切换按钮 */
-.toggle-buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
-}
-
-.toggle-buttons button {
-    width: 48%;
-}
-
-button.active {
-    background-color: #4e34c9;
-}
-
-/* 分享码和文本展示卡片样式 */
 #code-card,
-#text-card,
-#file-code-card,
-#file-card {
+#text-card {
     margin-top: 20px;
     padding: 15px;
     background-color: #f5f5f5;
@@ -131,10 +107,7 @@ button.active {
     max-height: 300px; /* 设置默认高度 */
 }
 
-/* 复制按钮样式 */
-#copy-text-button,
-#copy-code-button,
-#copy-file-code-button {
+#copy-text-button {
     margin-top: 10px; /* 增加按钮和卡片之间的间距 */
 }
 
@@ -143,12 +116,10 @@ button.active {
 }
 
 /* 自定义时间选择 */
-#custom-expiration,
-#custom-expiration-file {
+#custom-expiration {
     margin-top: 10px;
 }
 
-/* 标签样式 */
 label {
     font-size: 14px;
     color: #888;
@@ -176,8 +147,7 @@ label {
     }
 
     #text-input,
-    #text-card,
-    #file-card {
+    #text-card {
         height: 400px; /* 增加输入和输出区域的默认高度 */
     }
 }
@@ -190,8 +160,7 @@ label {
     }
 
     #text-input,
-    #text-card,
-    #file-card {
+    #text-card {
         height: 200px; /* 设置较小的默认高度，便于适应小屏幕 */
     }
 }
@@ -200,11 +169,9 @@ label {
     .card {
         padding: 15px;
     }
-
     h1 {
         font-size: 22px;
     }
-
     textarea,
     input,
     select,
@@ -212,26 +179,17 @@ label {
         font-size: 14px;
         padding: 10px;
     }
-
-    .toggle-buttons button {
-        font-size: 14px;
-    }
 }
 
 @media (max-width: 350px) {
     h1 {
         font-size: 20px;
     }
-
     textarea,
     input,
     select,
     button {
         font-size: 12px;
         padding: 8px;
-    }
-
-    .toggle-buttons button {
-        font-size: 12px;
     }
 }
