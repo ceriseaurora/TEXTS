@@ -1,5 +1,4 @@
 /* 通用样式 */
-
 body,
 html {
     margin: 0;
@@ -12,21 +11,25 @@ html {
     background: linear-gradient(135deg, #6e45e2, #88d3ce);
     color: #333;
     overflow: hidden;
+    box-sizing: border-box;
 }
 
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
 
 /* 容器样式 */
-
 .wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
+    padding: 20px;
 }
 
-
 /* 卡片风格 */
-
 .card {
     background-color: #fff;
     border-radius: 15px;
@@ -36,6 +39,7 @@ html {
     width: 100%;
     text-align: center;
     animation: fadeIn 0.6s ease-in-out;
+    margin: auto;
 }
 
 h1 {
@@ -44,9 +48,7 @@ h1 {
     color: #333;
 }
 
-
 /* 输入框与选择框样式 */
-
 textarea,
 input,
 select {
@@ -66,9 +68,7 @@ select:focus {
     outline: none;
 }
 
-
 /* 按钮样式 */
-
 button {
     background-color: #6e45e2;
     color: #fff;
@@ -110,9 +110,7 @@ button:active {
     display: none;
 }
 
-
 /* 自定义时间选择 */
-
 #custom-expiration {
     margin-top: 10px;
 }
@@ -125,9 +123,7 @@ label {
     margin-bottom: 5px;
 }
 
-
 /* 动画效果 */
-
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -139,12 +135,10 @@ label {
     }
 }
 
-
 /* 响应式设计 */
-
 @media (max-width: 500px) {
     .card {
-        padding: 20px;
+        padding: 15px;
         width: 90%;
     }
     h1 {
@@ -155,5 +149,19 @@ label {
     select,
     button {
         font-size: 14px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 350px) {
+    h1 {
+        font-size: 20px;
+    }
+    textarea,
+    input,
+    select,
+    button {
+        font-size: 12px;
+        padding: 8px;
     }
 }
