@@ -4,13 +4,10 @@ html {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; /* 更改为 min-height 以允许页面高度增加时滚动 */
+    min-height: 100vh; /* 使用最小高度来确保内容可以滚动 */
     background: linear-gradient(135deg, #6e45e2, #88d3ce);
     color: #333;
-    overflow: auto; /* 允许整个页面上下滚动 */
+    overflow: auto;
     box-sizing: border-box;
 }
 
@@ -27,7 +24,7 @@ html {
     align-items: center;
     width: 100%;
     padding: 20px;
-    overflow: auto; /* 允许内部内容滚动 */
+    overflow: auto;
 }
 
 /* 卡片风格 */
@@ -36,13 +33,13 @@ html {
     border-radius: 15px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     padding: 30px;
-    max-width: 400px;
     width: 100%;
+    max-width: 600px; /* 增加卡片的最大宽度 */
     text-align: center;
     animation: fadeIn 0.6s ease-in-out;
-    margin: auto;
-    resize: both; /* 允许用户拖动调整大小 */
+    margin: 20px auto;
     overflow: auto;
+    resize: both;
 }
 
 h1 {
@@ -62,7 +59,7 @@ select {
     border: 1px solid #ddd;
     font-size: 16px;
     transition: border 0.3s ease;
-    resize: vertical; /* 允许调整文本区域的高度 */
+    resize: vertical;
 }
 
 textarea:focus,
@@ -102,27 +99,15 @@ button:active {
     background-color: #f5f5f5;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    word-wrap: break-word; /* 确保长单词会换行 */
-    overflow-wrap: break-word; /* 支持其他浏览器 */
-    max-width: 100%; /* 保持卡片的宽度不超出页面 */
-    box-sizing: border-box; /* 确保内边距不会影响卡片大小 */
-    resize: both; /* 允许用户拖动调整大小 */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    box-sizing: border-box;
     overflow: auto;
+    max-height: 300px; /* 设置默认高度 */
 }
 
-#code-card p,
-#text-card p {
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-
-#text-display {
-    font-size: 18px;
-    margin: 0;
-    padding: 10px; /* 增加文本区域的内边距，确保上下左右间距相等 */
-    white-space: pre-wrap; /* 保持文本的换行格式 */
-    word-break: break-word;
-    line-height: 1.5; /* 调整行距使文本更易读 */
+#copy-text-button {
+    margin-top: 10px; /* 增加按钮和卡片之间的间距 */
 }
 
 .hidden {
@@ -154,11 +139,34 @@ label {
     }
 }
 
-/* 响应式设计 */
+/* PC 浏览器布局 */
+@media (min-width: 1024px) {
+    .card {
+        max-width: 800px;
+    }
+
+    #text-input,
+    #text-card {
+        height: 400px; /* 增加输入和输出区域的默认高度 */
+    }
+}
+
+/* 移动浏览器布局 */
+@media (max-width: 768px) {
+    .card {
+        width: 95%;
+        max-width: 500px;
+    }
+
+    #text-input,
+    #text-card {
+        height: 200px; /* 设置较小的默认高度，便于适应小屏幕 */
+    }
+}
+
 @media (max-width: 500px) {
     .card {
         padding: 15px;
-        width: 90%;
     }
     h1 {
         font-size: 22px;
