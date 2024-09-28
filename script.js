@@ -1,4 +1,5 @@
-document.getElementById('expiration-select').addEventListener('change', (e) => {
+// 监听到期时间选择变化事件
+document.getElementById('expiration-select').addEventListener('change', (e) => { 
     if (e.target.value === 'custom') {
         document.getElementById('custom-expiration').style.display = 'block';
     } else {
@@ -6,8 +7,14 @@ document.getElementById('expiration-select').addEventListener('change', (e) => {
     }
 });
 
-document.getElementById('submit-button').addEventListener('click', async() => {
+// 提交按钮事件监听
+document.getElementById('submit-button').addEventListener('click', async () => {
+    // 获取并去除多余空格的文本
     const text = document.getElementById('text-input').value.trim();
+
+    // 对输入的文本进行 URL 编码
+    const encodedText = encodeURIComponent(text);
+
     const expirationSelect = document.getElementById('expiration-select').value;
     let expiration;
 
@@ -16,6 +23,7 @@ document.getElementById('submit-button').addEventListener('click', async() => {
         return;
     }
 
+    // 处理自定义到期时间
     if (expirationSelect === 'custom') {
         const customDate = document.getElementById('custom-date').value;
         const customTime = document.getElementById('custom-time').value;
@@ -45,11 +53,12 @@ document.getElementById('submit-button').addEventListener('click', async() => {
         }
     }
 
+    // 提交到服务器
     try {
         const response = await fetch('https://paste-backened.aquariushho.asia', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ text, expiration })
+            body: JSON.stringify({ text: encodedText, expiration })
         });
         if (response.ok) {
             const result = await response.json();
@@ -73,7 +82,8 @@ document.getElementById('copy-code-button').addEventListener('click', () => {
     });
 });
 
-document.getElementById('fetch-button').addEventListener('click', async() => {
+// 获取文本按钮事件监听
+document.getElementById('fetch-button').addEventListener('click', async () => {
     const code = document.getElementById('code-input').value.trim();
     if (!code) {
         alert('请输入分享码');
@@ -84,7 +94,12 @@ document.getElementById('fetch-button').addEventListener('click', async() => {
         const response = await fetch(`https://paste-backened.aquariushho.asia?code=${code}`);
         if (response.ok) {
             const result = await response.json();
-            document.getElementById('text-display').textContent = result.text;
+
+            // 对返回的编码文本进行解码
+            const decodedText = decodeURIComponent(result.text);
+
+            // 显示解码后的文本
+            document.getElementById('text-display').textContent = decodedText;
             document.getElementById('text-card').classList.remove('hidden');
         } else if (response.status === 404) {
             document.getElementById('text-display').textContent = 'Text not found or expired';
