@@ -134,11 +134,16 @@ function setCardHeight() {
     if (isMobile) {
         // 移动设备：默认长度设置，使按钮正好在屏幕底部
         textCard.style.height = 'calc(100vh - 300px)';
-        copyButton.style.position = 'absolute';
-        copyButton.style.bottom = '20px';
+        textCard.style.overflowY = 'auto'; // 允许上下滑动查看内容
+        copyButton.style.position = 'relative';
+        copyButton.style.marginTop = '10px';
         copyButton.style.width = '90%';
     } else {
         // PC 浏览器：适当增加卡片的默认长度
         textCard.style.height = '400px';
+        textCard.style.overflowY = 'auto'; // 允许上下滑动查看内容
+        copyButton.style.position = 'relative';
+        copyButton.style.marginTop = '10px';
+        copyButton.style.width = 'auto';
     }
 }
